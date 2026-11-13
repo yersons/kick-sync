@@ -1,0 +1,25 @@
+# /etc/systemd/system/kick-sync.service
+[Unit]
+Description=Kick Sync (cola de canciones + reproductor sincronizado)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/kick-sync
+# Si Node se instaló con nvm, ajusta la ruta con: which node
+ExecStart=/usr/bin/node server.js
+Restart=always
+RestartSec=3
+User=kicksync
+Group=kicksync
+
+# Endurecimiento: el servicio solo puede escribir en data/
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/kick-sync/data
+
+[Install]
+WantedBy=multi-user.target

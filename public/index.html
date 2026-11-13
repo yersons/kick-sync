@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kick Sync</title>
+  <link rel="icon" href="/favicon.svg">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+  <!-- # Cabecera con el botón de login -->
+  <div class="hero">
+    <div class="pill ok">para Kick &middot; sincronizado</div>
+    <h1>Kick <b>Sync</b></h1>
+    <p>Tu chat pide canciones con <code>!sr</code>, tus mods las revisan y las aprueban, y todo suena sincronizado en OBS y para quien quiera escuchar contigo.</p>
+    <a class="btn pri" id="login" href="/auth/kick/login?next=/dashboard">Entrar con Kick</a>
+    <div class="err" id="err"></div>
+  </div>
+
+  <!-- # Características -->
+  <div class="feat">
+    <div class="card"><h2>Cola moderada</h2>Las peticiones llegan a una bandeja; mods y streamer aprueban o rechazan con un clic.</div>
+    <div class="card"><h2>Reproducción en sync</h2>Todos ven el mismo segundo del video. Pausa, salta o mueve la barra y todos lo siguen.</div>
+    <div class="card"><h2>Fuente para OBS</h2>Un link privado para el navegador de OBS, y un link público para tu comunidad.</div>
+    <div class="card"><h2>El chat también manda</h2><code>!voteskip</code> para saltar por votación, <code>!cola</code> para ver lo que viene y <code>!undo</code> para retirar tu pedido.</div>
+    <div class="card"><h2>Control total</h2>Límites por persona, duración máxima, lista de bloqueados y mods de confianza, todo desde el panel.</div>
+    <div class="card"><h2>Panel en vivo</h2>Todo se actualiza al instante, con aviso sonoro cuando llega una petición nueva.</div>
+  </div>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/index.js"></script>
+</body>
+</html>

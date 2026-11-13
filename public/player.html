@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kick Sync · Reproductor</title>
+  <link rel="icon" href="/favicon.svg">
+  <link rel="stylesheet" href="/css/player.css">
+</head>
+<body>
+  <div id="wrap">
+    <div id="yt"></div>
+    <div id="idle"><span class="eq"><i></i><i></i><i></i><i></i></span><b>Kick Sync</b><span id="idletxt">Conectando…</span></div>
+    <div id="gate" hidden><button id="go">Unirme y escuchar en sync</button></div>
+    <div id="next" hidden></div>
+    <div id="bar" hidden>
+      <div id="prog"><i></i></div>
+      <div class="t"><b id="ttl"></b><span id="sub"></span></div>
+      <button id="mute">Sonido</button>
+      <input type="range" id="vol" min="0" max="100" value="60">
+    </div>
+  </div>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/player.js"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Owner · Kick Sync</title>
+  <link rel="icon" href="/favicon.svg">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/owner.css">
+</head>
+<body>
+  <header class="top">
+    <span class="logo">Kick <b>Sync</b></span><span class="tag owner">OWNER</span>
+    <span class="sp"></span>
+    <a class="btn sm" href="/dashboard">Mi panel</a>
+    <span class="muted sm" id="who"></span>
+    <button class="btn sm" id="logout">Salir</button>
+  </header>
+  <div class="banner" id="maintbanner" hidden>Modo mantenimiento activo: los chats de todos los canales se están ignorando.</div>
+
+  <main>
+    <div class="stats" id="stats"></div>
+
+    <div class="two">
+      <!-- # Ajustes que afectan a toda la plataforma -->
+      <section class="card">
+        <h2>Ajustes globales</h2>
+        <label class="fld">Anuncio para todos los paneles (vacío = sin anuncio)<input type="text" id="g_ann" maxlength="300" placeholder="Ej: Mantenimiento hoy a las 22:00"></label>
+        <label class="row"><input type="checkbox" id="g_maint"> Modo mantenimiento (ignora el chat de todos los canales)</label>
+        <label class="row"><input type="checkbox" id="g_signups"> Registros abiertos (cualquier streamer puede activar su canal)</label>
+        <label class="fld">Si los registros están cerrados, pueden activar estos usuarios (uno por línea)<textarea id="g_allow" rows="3" placeholder="usuario1&#10;usuario2"></textarea></label>
+        <div class="btns"><button class="btn pri" id="g_save">Guardar ajustes</button></div>
+      </section>
+
+      <!-- # Estado del servidor y copias de seguridad -->
+      <section class="card">
+        <h2>Servidor y respaldos</h2>
+        <div id="srv" class="sm muted server-info"></div>
+        <div class="btns">
+          <button class="btn pri" id="bk">Crear respaldo ahora</button>
+          <a class="btn" href="/api/owner/export" download>Exportar datos (sin tokens)</a>
+        </div>
+        <div class="sm muted" id="bklist"></div>
+      </section>
+    </div>
+
+    <section class="card">
+      <h2>Canales <span class="badge" id="chn">0</span><input type="text" class="sear" id="q" placeholder="Buscar canal…"></h2>
+      <div class="tw">
+        <table class="t">
+          <thead><tr><th>Canal</th><th>Estado</th><th>Cola / Pend.</th><th>Suena ahora</th><th>Reprod. / Pedidas</th><th>Actividad</th><th>Acciones</th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card"><h2>Registro de actividad</h2><div class="aud" id="aud"></div></section>
+  </main>
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/owner.js"></script>
+</body>
+</html>

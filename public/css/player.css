@@ -1,0 +1,35 @@
+/* # Reproductor (OBS y enlace público) */
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;height:100%;background:#000;color:#fff;font:15px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;overflow:hidden}
+#wrap{position:fixed;inset:0}
+#yt{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+
+/* # Pantalla de espera */
+#idle{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;background:#000;color:#8b97a6;text-align:center;padding:1rem}
+#idle b{color:#53fc18;font-size:1.4rem}
+.eq{display:inline-flex;gap:3px;align-items:flex-end;height:22px;margin-bottom:.4rem}
+.eq i{width:5px;background:#53fc18;border-radius:2px;animation:eq 1s ease-in-out infinite}
+.eq i:nth-child(2){animation-delay:.2s}.eq i:nth-child(3){animation-delay:.4s}.eq i:nth-child(4){animation-delay:.1s}
+@keyframes eq{0%,100%{height:4px}50%{height:22px}}
+
+/* # Botón para activar el audio (los navegadores lo exigen) */
+#gate{position:absolute;inset:0;background:#000d;display:flex;align-items:center;justify-content:center;z-index:5}
+#gate button{background:#53fc18;color:#06140a;border:0;border-radius:12px;padding:1rem 1.6rem;font-size:1.1rem;font-weight:800;cursor:pointer}
+
+/* # Barra inferior y siguiente canción */
+#bar{position:absolute;left:0;right:0;bottom:0;padding:.7rem 1rem;background:linear-gradient(transparent,#000c);display:flex;align-items:center;gap:.8rem;z-index:3}
+#bar .t{flex:1;min-width:0}
+#bar .t b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#bar .t span{font-size:12px;color:#aab4c0}
+#bar input[type=range]{accent-color:#53fc18;width:110px}
+#bar button{background:#ffffff1f;border:0;color:#fff;border-radius:8px;padding:.35rem .6rem;cursor:pointer}
+#prog{position:absolute;left:0;right:0;top:0;height:3px;background:#ffffff22}
+#prog i{display:block;height:100%;background:#53fc18;width:0;transition:width .5s linear}
+#next{position:absolute;top:.7rem;right:.8rem;background:#000a;padding:.35rem .7rem;border-radius:8px;font-size:12px;color:#cbd3dc;z-index:3;max-width:50vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* # Modo OBS: sin controles (con ?overlay=1 se muestra la barra, con ?transparent=1 el fondo es transparente) */
+.obs #bar,.obs #next{display:none}
+.obs.overlay #bar{display:flex}
+.obs #idle{background:transparent}
+.obs.transparent,.obs.transparent body{background:transparent}

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Panel · Kick Sync</title>
+  <link rel="icon" href="/favicon.svg">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+  <!-- # Cabecera: selector de canal, sesión y aviso sonoro -->
+  <header class="top">
+    <span class="logo">Kick <b>Sync</b></span>
+    <select id="chsel" title="Canal"></select>
+    <span class="tag owner" id="ownertag" hidden>OWNER</span>
+    <span class="sp"></span>
+    <a class="btn sm" id="ownerlink" href="/owner" hidden>Panel Owner</a>
+    <button class="btn sm" id="snd" title="Sonido al llegar una petición nueva">Aviso: off</button>
+    <img class="avatar" id="av" alt="" hidden>
+    <span class="muted sm" id="who" title="Clic para copiar tu ID de Kick" style="cursor:pointer"></span>
+    <button class="btn sm" id="logout">Salir</button>
+  </header>
+  <div class="banner" id="ann" hidden></div>
+  <div class="banner bad" id="susp" hidden>Este canal está suspendido por el administrador: no recibe peticiones y el reproductor público está apagado.</div>
+
+  <!-- # Pantalla para quien aún no tiene canal -->
+  <div id="center" class="card" hidden></div>
+
+  <main id="app" hidden>
+    <div class="col">
+      <section class="card">
+        <h2>Reproduciendo <span class="eq off" id="eq"><i></i><i></i><i></i><i></i></span> <span class="pill" id="subpill"></span><span class="sp"></span><span class="muted plain" id="stats"></span></h2>
+        <div id="np"></div>
+      </section>
+
+      <section class="card">
+        <h2>Por revisar <span class="badge" id="pcount">0</span>
+          <span class="sp"></span>
+          <button class="btn sm" id="apall">Aprobar todas</button>
+          <button class="btn sm bad" id="clrp">Limpiar</button></h2>
+        <div id="pending"></div>
+      </section>
+
+      <section class="card">
+        <h2>Cola de reproducción <span class="badge" id="qcount">0</span>
+          <span class="sp"></span>
+          <button class="btn sm" id="shuf" title="Mezclar el orden de la cola">Mezclar</button>
+          <button class="btn sm bad" id="clrq">Vaciar</button></h2>
+        <div class="add">
+          <input type="text" id="addurl" placeholder="Pegar link de YouTube para añadir directo…">
+          <button class="btn pri" id="addbtn">Añadir</button>
+        </div>
+        <div id="queue"></div>
+      </section>
+
+      <section class="card">
+        <h2>Historial</h2>
+        <div id="history"></div>
+      </section>
+    </div>
+
+    <div class="col">
+      <section class="card">
+        <h2>Enlaces</h2>
+        <div class="fld">Público (tu comunidad escucha sincronizada)</div>
+        <div class="linkrow"><input type="text" id="lpub" readonly><button class="btn sm" data-copy="lpub">Copiar</button></div>
+        <div id="obsbox">
+          <div class="fld">Fuente de navegador para OBS (privado, no lo muestres)</div>
+          <div class="linkrow"><input type="text" id="lobs" readonly><button class="btn sm" data-copy="lobs">Copiar</button></div>
+          <button class="btn sm bad" id="regen">Regenerar clave OBS</button>
+        </div>
+        <p class="muted sm">Chat: <code id="cmdhint">!sr</code> &lt;link&gt; · <code>!skip</code> (mods) · <code>!voteskip</code> · <code>!undo</code> · <code>!song</code> · <code>!cola</code></p>
+      </section>
+
+      <section class="card">
+        <h2>Configuración del canal</h2>
+        <div id="cfgbody"></div>
+      </section>
+    </div>
+  </main>
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>
